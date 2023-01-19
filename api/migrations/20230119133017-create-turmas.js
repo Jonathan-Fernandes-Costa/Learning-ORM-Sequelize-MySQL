@@ -1,7 +1,6 @@
 'use strict';
-/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize){
     await queryInterface.createTable('Turmas', {
       id: {
         allowNull: false,
@@ -9,18 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      data_inicio: {
-        type: Sequelize.DATEONLY
-      },
       docente_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Pessoas', key: 'id'}//Refereciando tabelas
+        references: { model: 'Pessoas', key: 'id'}
+      },
+      data_inicio: {
+        type: Sequelize.DATEONLY
       },
       nivel_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Niveis', key: 'id'}//Refereciando tabelas
+        references: { model: 'Niveis', key: 'id'}
       },
       createdAt: {
         allowNull: false,
@@ -32,7 +31,7 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize){
     await queryInterface.dropTable('Turmas');
   }
 };
