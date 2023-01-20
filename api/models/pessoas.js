@@ -4,15 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     nome: DataTypes.STRING,
     ativo: DataTypes.BOOLEAN,
     email: DataTypes.STRING,
-    role: DataTypes.STRING,
+    role: DataTypes.STRING
   }, {});
-  Pessoas.associate = function (models) {
-    Pessoas.hasmany(models.Turmas, {//Criando a Associação e definindo o nome dela
+  Pessoas.associate = function(models) {
+    Pessoas.hasMany(models.Turmas, {
       foreignKey: 'docente_id'
-    })
-    Pessoas.hasmany(models.Matriculas, {//Criando a Associação e definindo o nome dela
+    }) 
+    Pessoas.hasMany(models.Matriculas, {
       foreignKey: 'estudante_id'
     })
+
   };
   return Pessoas;
 };
